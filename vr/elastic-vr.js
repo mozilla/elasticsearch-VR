@@ -11,14 +11,14 @@ d3.json("/info", function(error, jsondata) {
           .attr('visible', 'true')
           .attr('position', "1 5 -10")
           .attr('height', '1')
-          .attr('material', 'color: #66ffff;')
+          .attr('material', 'src: #estexture;')
           .attr('dynamic-body','mass:500;linearDamping:.9;angularDamping:.9;')
           .append('a-animation')
             .attr('attribute',"scale")
             .attr('direction',"alternate-reverse")
             .attr('dur',"5000")
             .attr('from',"1 1 1")
-            .attr('to',"1.5 1.5 1.5")
+            .attr('to',"1.2 1.2 1.2")
             .attr('repeat',"indefinite");
 
     }
