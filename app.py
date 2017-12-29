@@ -59,7 +59,7 @@ else:
 #connect to ES
 esConnecton = ElasticsearchClient((list('{0}'.format(s) for s in app.config['ES_SERVERS'].split(','))), 10)
 logger.info(app.config['ES_SERVERS'])
-logger.info(esConnecton.get_cluster_health())
+#logger.info(esConnecton.get_cluster_health())
 
 
 @app.route('/info')
