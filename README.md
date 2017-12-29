@@ -14,10 +14,10 @@ to see if VR can be a useful interface into Elastic Search for discovery, queryi
 
 Stack
 ------
-a-frame.io for the webVR portion
-Windows Mixed Reality Headset
-elastic search (in docker) for a target ES
-Python/flask for the middle/data driving tier. 
+- a-frame.io for the webVR portion
+- Windows Mixed Reality Headset
+- Elastic search (in docker) for a target ES
+- Python/flask for the middle/data driving tier. 
 
 The idea is that you would use the Mixed Reality headset to enter the scene and trigger basic interactions like: 
 
