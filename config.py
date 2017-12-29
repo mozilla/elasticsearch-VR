@@ -18,6 +18,7 @@ class Config(object):
     SESSION_COOKIE_HTTPONLY = True
     SESSION_COOKIE_SECURE = False
     LOGGER_NAME = "elastic-VR"
+    ES_SERVERS = "127.0.0.1:9200,127.0.0.1:9200"
 
 
 class ProductionConfig(Config):
