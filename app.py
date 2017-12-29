@@ -1,7 +1,20 @@
 import os
+import sys
 import config
 import logging
 import json
+
+sys.path.append(os.path.join(os.path.dirname(__file__), "lib"))
+sys.path.append(os.path.join(os.path.dirname(__file__), "utilities"))
+from elasticsearch import Elasticsearch
+from elasticsearch_dsl import Search
+from elasticsearch.exceptions import NotFoundError
+from elasticsearch.helpers import bulk, BulkIndexError
+
+from elasticsearch_client import ElasticsearchClient, ElasticsearchBadServer, ElasticsearchInvalidIndex, ElasticsearchException
+from utilities.toUTC import toUTC
+from query_models import SearchQuery, TermMatch, AggregatedResults, SimpleResults
+
 
 from flask import (
     Flask,
@@ -18,7 +31,6 @@ from flask import (
 # setup the app
 app = Flask(__name__)
 #app.config.from_pyfile('env.example')
-
 
 #logging
 logger = logging.getLogger(__name__)
@@ -44,12 +56,18 @@ else:
     app.config.from_object(config.DevelopmentConfig())
 
 
+#connect to ES
+esConnecton = ElasticsearchClient((list('{0}'.format(s) for s in app.config['ES_SERVERS'].split(','))), 10)
+logger.info(app.config['ES_SERVERS'])
+logger.info(esConnecton.get_cluster_health())
+
+
 @app.route('/info')
 def info():
     """Return the JSONified user session for debugging."""
     return jsonify(
-        clustername='something'
-)
+        clusterstatus=esConnecton.get_cluster_health()
+    )
 
 @app.route('/')
 def main_page():
