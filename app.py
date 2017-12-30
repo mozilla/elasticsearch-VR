@@ -64,7 +64,7 @@ logger.info(app.config['ES_SERVERS'])
 
 @app.route('/info')
 def info():
-    """Return the JSONified user session for debugging."""
+    """Return the JSONified cluster info"""
     return jsonify(
         clusterstatus=esConnecton.get_cluster_health()
     )
