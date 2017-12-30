@@ -3,6 +3,7 @@ import sys
 import config
 import logging
 import json
+import requests
 
 sys.path.append(os.path.join(os.path.dirname(__file__), "lib"))
 sys.path.append(os.path.join(os.path.dirname(__file__), "utilities"))
@@ -54,21 +55,21 @@ else:
 
 
 #connect to ES
-esConnecton = ElasticsearchClient((list('{0}'.format(s) for s in app.config['ES_SERVERS'].split(','))), 10)
+esClient = ElasticsearchClient((list('{0}'.format(s) for s in app.config['ES_SERVERS'].split(','))),10)
 logger.info(app.config['ES_SERVERS'])
 
 @app.route('/info')
 def info():
     """Return the JSONified cluster info"""
     return jsonify(
-        clusterstatus=esConnecton.get_cluster_health()
+        clusterstatus=esClient.es_connection.nodes.info()
     )
 
 @app.route('/indices')
 def indices():
     """return the indexes in the cluster"""
     return jsonify(
-        indices=esConnecton.get_indices()
+        indices=esClient.get_indices()
     )
 
 @app.route('/')
