@@ -14,6 +14,7 @@ d3.json("/info", function(error, jsondata) {
             .classed('esserver',true)
             .attr('height', '1')
             .attr('material', 'src: #estexture;')
+            .attr('dynamic-body','mass:500;linearDamping:.9;angularDamping:.9;')
             .append('a-animation')
                 .attr('attribute',"scale")
                 .attr('direction',"alternate-reverse")

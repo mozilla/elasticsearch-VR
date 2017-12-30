@@ -35,9 +35,9 @@
       <a-plane position="0 -.1 -4" rotation="-90 0 0" width="40" height="40" color="#7BC8A4" static-body></a-plane>
 
       <!-- es cluster -->
-      <a-entity id="escluster" position="0 1 -5" layout="type: line; margin:1.3;" dynamic-body="mass:500;linearDamping:.9;angularDamping:.9;">
+      <a-entity id="escluster" position="0 1.5 -5" layout="type: line; margin:1.3;" dynamic-body="mass:500;linearDamping:.9;angularDamping:.9;">
         <!-- log -->
-        <a-log channel="eslog" text="align:left;" ></a-log>
+        <a-log channel="eslog" text="align:left;" position="0 -1 -5" dynamic-body="mass:500;linearDamping:.9;angularDamping:.9;"></a-log>
       </a-entity>
 
       <a-locomotor>
