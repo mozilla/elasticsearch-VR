@@ -14,7 +14,7 @@ d3.json("/info", function(error, jsondata) {
           .append('a-animation')
             .attr('attribute',"scale")
             .attr('direction',"alternate-reverse")
-            .attr('dur',Math.min(5000,Math.floor(Math.random(1)*10000)))
+            .attr('dur',Math.max(4000,Math.floor(Math.random(1)*10000)))
             .attr('from',"1 1 1")
             .attr('to',"1.2 1.2 1.2")
             .attr('repeat',"indefinite");
