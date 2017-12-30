@@ -10,6 +10,7 @@
     <script src="https://unpkg.com/super-hands@2.1.0/dist/super-hands.min.js"></script>
     <script src="https://cdn.rawgit.com/feiss/aframe-environment-component/master/dist/aframe-environment-component.min.js"></script>
     <script src="https://cdn.rawgit.com/donmccurdy/aframe-physics-system/v2.1.0/dist/aframe-physics-system.min.js"></script>
+    <script src="https://unpkg.com/aframe-layout-component"></script>
     <script src="https://unpkg.com/d3"></script>
     <script src="vr/elastic-vr.js"></script>
 
@@ -31,6 +32,13 @@
         gridColor:#00ff80;"></a-entity>
       <!-- Add a static physics plane-->
       <a-plane position="0 -.1 -4" rotation="-90 0 0" width="40" height="40" color="#7BC8A4" static-body></a-plane>
+
+      <!-- log -->
+      <a-log channel="eslog"></a-log>
+
+      <!-- es cluster -->
+      <a-entity id="escluster" position="0 1 -5" layout="type: line; margin:1.3;" dynamic-body="mass:500;linearDamping:.9;angularDamping:.9;">
+      </a-entity>
 
       <a-locomotor>
             <a-entity id="lhand" hand-controls="left" super-hands
