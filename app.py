@@ -58,11 +58,11 @@ else:
 esClient = ElasticsearchClient((list('{0}'.format(s) for s in app.config['ES_SERVERS'].split(','))),10)
 logger.info(app.config['ES_SERVERS'])
 
-@app.route('/info')
+@app.route('/nodes')
 def info():
-    """Return the JSONified cluster info"""
+    """Return the JSONified nodes info"""
     return jsonify(
-        clusterstatus=esClient.es_connection.nodes.info()
+        clusternodes=esClient.es_connection.cat.nodes(h='name')
     )
 
 @app.route('/indices')

@@ -1,13 +1,14 @@
 //kick things off by connecting to our ES cluster and presenting it in 3D
 var globalState={};
 
-d3.json("/info", function(error, jsondata) {
+d3.json("/nodes", function(error, jsondata) {
     if (error){
         AFRAME.log(error,'eslog');
     }
     else{
+        window.jsondata = jsondata;
         var escluster = d3.select('#escluster');
-        var esnodes = Math.max(3,jsondata.clusterstatus.number_of_data_nodes)
+        var esnodes = Math.max(3,jsondata.clusternodes.length)
         for (var i = 0; i < esnodes ; i++) {
             AFRAME.log("building an es node",'eslog');
             escluster.append('a-box')
