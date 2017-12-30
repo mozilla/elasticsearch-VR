@@ -1,3 +1,5 @@
+//kick things off by connecting to our ES cluster and presenting it in 3D
+var globalState={};
 
 d3.json("/info", function(error, jsondata) {
     if (error){
@@ -22,5 +24,10 @@ d3.json("/info", function(error, jsondata) {
 
         }
     }
+});
 
+d3.json("/indices", function(error,jsondata){
+    jsondata.indices.forEach(function(d,i){
+        AFRAME.log('discovered index: ' + d,'eslog');
+    });
 });
