@@ -8,6 +8,7 @@ d3.json("/nodes", function(error, jsondata) {
     else{
         window.jsondata = jsondata;
         var escluster = d3.select('#escluster');
+        //make small dev clusters feel larger
         var esnodes = Math.max(3,jsondata.clusternodes.length)
         for (var i = 0; i < esnodes ; i++) {
             AFRAME.log("building an es node",'eslog');
@@ -23,7 +24,6 @@ d3.json("/nodes", function(error, jsondata) {
                 .attr('from',"1 1 1")
                 .attr('to',"1.2 1.2 1.2")
                 .attr('repeat',"indefinite");
-
         }
     }
 });
