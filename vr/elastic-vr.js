@@ -6,14 +6,13 @@ d3.json("/nodes", function(error, jsondata) {
         AFRAME.log(error,'eslog');
     }
     else{
-        window.jsondata = jsondata;
         var escluster = d3.select('#escluster');
         //make small dev clusters feel larger
         var esnodes = Math.max(3,jsondata.clusternodes.length)
         for (var i = 0; i < esnodes ; i++) {
             AFRAME.log("building an es node",'eslog');
             escluster.append('a-box')
-            .classed('esserver',true)
+            .classed('esnode',true)
             .attr('height', '1')
             .attr('material', 'src: #estexture;')
             .attr('dynamic-body','mass:500;linearDamping:.9;angularDamping:.9;')
