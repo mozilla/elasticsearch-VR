@@ -1,3 +1,6 @@
+//Help the keyboard/input controls find their assets:
+AFRAME.ASSETS_PATH = "./assets";
+
 //kick things off by connecting to our ES cluster and presenting it in 3D
 var globalState={};
 
