@@ -84,6 +84,12 @@ def vr_file(filename):
     return send_from_directory('vr/',
                                filename)
 
+@app.route("/js/<path:filename>")
+def js_file(filename):
+    """serve any file in /js"""
+    return send_from_directory('js/',
+                               filename)
+
 @app.route("/assets/<path:filename>")
 def assets_file(filename):
     """serve any file in /assets"""
