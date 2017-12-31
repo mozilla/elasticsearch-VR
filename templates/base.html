@@ -11,30 +11,33 @@
     <script src="https://cdn.rawgit.com/feiss/aframe-environment-component/master/dist/aframe-environment-component.min.js"></script>
     <script src="https://cdn.rawgit.com/donmccurdy/aframe-physics-system/v2.1.0/dist/aframe-physics-system.min.js"></script>
     <script src="https://unpkg.com/aframe-layout-component"></script>
+    <script src="https://rawgit.com/mayognaise/aframe-mouse-cursor-component/master/dist/aframe-mouse-cursor-component.min.js"></script>
     <script src="https://unpkg.com/aframe-log-component/dist/aframe-log-component.min.js"></script>
     <script src="https://unpkg.com/d3"></script>
-    <script src="js/aframe-material.min.js"></script>
-    <script type="text/javascript">
-      AFRAME.ASSETS_PATH = "./assets";
-    </script>
+    <script src="js/aframe-material.js"></script>
     <script src="vr/elastic-vr.js"></script>
 
   </head>
   <body>
-    <a-scene physics>
-        <a-assets>
-          <img id="estexture" src="assets/blueMetal.jpg">
-        </a-assets>
-        <a-entity environment="preset: tron;
-        dressingAmount: 0;
-        ground: flat;
-        fog: 0.2;
-        skyType:gradient;
-        skyColor:#091b39;
-        horizonColor:#284a9e;
-        lightPosition:-0.72 0.62 0.4;
-        grid: 1x1;
-        gridColor:#00ff80;"></a-entity>
+      <a-scene physics cursor="rayOrigin: mouse">
+      <a-assets>
+        <img id="estexture" src="assets/blueMetal.jpg">
+      </a-assets>
+
+      <a-entity environment="preset: tron;
+      dressingAmount: 0;
+      ground: flat;
+      fog: 0.2;
+      skyType:gradient;
+      skyColor:#091b39;
+      horizonColor:#284a9e;
+      lightPosition:-0.72 0.62 0.4;
+      grid: 1x1;
+      gridColor:#00ff80;"></a-entity>
+
+      <a-entity laser-controls="hand: right"></a-entity>
+      <a-entity camera="userHeight:1;" look-controls wasd-controls></a-entity>
+
       <!-- Add a static physics plane-->
       <a-plane position="0 -.1 -4" rotation="-90 0 0" width="40" height="40" color="#7BC8A4" static-body></a-plane>
 
@@ -44,14 +47,24 @@
         <a-log channel="eslog" text="align:left;" position="0 -1 -5" dynamic-body="mass:500;linearDamping:.9;angularDamping:.9;"></a-log>
       </a-entity>
 
-      <a-locomotor>
-            <a-entity id="lhand" hand-controls="left" super-hands
-                      sphere-collider="objects: #mech">
-            </a-entity>
-            <a-entity id="rhand" hand-controls="right" super-hands
-                      sphere-collider="objects: #mech">
-            </a-entity>
-    </a-locomotor>
+
+      <!-- BEGIN INPUTS/KEYBOARD -->
+      <a-keyboard position="-1.5 .5 -2"></a-keyboard>
+      <a-input position="-0.7 2 -2.5" placeholder="Username" color="black" width="1" disabled='false' value='something'></a-input>
+      <a-input position="-0.7 1.8 -2.5" type="password" placeholder="Password" color="black" width="1" disabled='false'></a-input>
+      <!-- END INPUTS/KEYBOARD -->
+      <a-rounded position="0.5 0.5 -2.5" width="4" height="3.1" radius="0.05" rotation="0 -20 0" scale="0.3 0.3 0.3">
+        <a-form >
+            <a-switch position="0.2 2.7 0" enabled="true"></a-switch>
+            <a-radio position="0.2 2.4 0" width="3" name="food" label="Burger with fries and pizza" value="pizza"></a-radio>
+            <a-radio position="0.2 2.1 0" width="3" name="food" label="Veggies" checked="true" disabled="true"></a-radio>
+            <a-radio position="0.2 1.8 0" width="3" name="food" label="Ice cream"></a-radio>
+            <a-checkbox position="0.2 1.5 0" width="3" name="stuff" label="I am a checkbox" checked="true"></a-checkbox>
+            <a-checkbox position="0.2 1.2 0" width="3" name="stuff" label="And I am another one" checked="true" disabled="true"></a-checkbox>
+            <a-button position="0.2 0.8 0" name="stuff" value="Click me" type="raised"></a-button>
+            <a-button position="0.2 0.35 0" width="3" name="stuff" value="You cannot click me" disabled="true"></a-button>
+        </a-form>
+      </a-rounded>
     </a-scene>
   </body>
 </html>
