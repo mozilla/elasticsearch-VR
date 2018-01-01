@@ -35,3 +35,28 @@ d3.json("/indices", function(error,jsondata){
         AFRAME.log('discovered index: ' + d,'eslog');
     });
 });
+
+//setup the text to speech
+var preferredVoice = undefined;
+//choose some preferred voices (lots of junk on the mac)
+var synth = window.speechSynthesis;
+voices = synth.getVoices();
+
+for(i = 0; i < voices.length ; i++) {
+  if(! preferredVoice && voices[i].name === 'Kate') {
+    preferredVoice = voices[i];
+  } else
+  if (! preferredVoice && voices[i].name === 'Samantha') {
+    preferredVoice = voices[i];
+  }
+}
+
+var say=function (speechText){
+  var utterThis = new SpeechSynthesisUtterance(speechText);
+  if (preferredVoice){
+      utterThis.voice=preferredVoice;
+  }
+  synth.speak(utterThis);
+}
+
+say('simulation is ready');
