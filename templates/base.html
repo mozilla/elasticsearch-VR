@@ -11,8 +11,8 @@
     <script src="https://cdn.rawgit.com/feiss/aframe-environment-component/master/dist/aframe-environment-component.min.js"></script>
     <script src="https://cdn.rawgit.com/donmccurdy/aframe-physics-system/v2.1.0/dist/aframe-physics-system.min.js"></script>
     <script src="https://unpkg.com/aframe-layout-component"></script>
-    <script src="https://rawgit.com/mayognaise/aframe-mouse-cursor-component/master/dist/aframe-mouse-cursor-component.min.js"></script>
     <script src="https://unpkg.com/aframe-log-component/dist/aframe-log-component.min.js"></script>
+    <script src="https://cdn.rawgit.com/caseyyee/aframe-ui-widgets/master/dist/aframe-ui-widgets.min.js"></script>
     <script src="https://unpkg.com/d3"></script>
     <script src="js/aframe-material.js"></script>
     <script src="vr/elastic-vr.js"></script>
@@ -22,6 +22,12 @@
       <a-scene physics cursor="rayOrigin: mouse">
       <a-assets>
         <img id="estexture" src="assets/blueMetal.jpg">
+        <a-mixin id="beveled-square" geometry="primitive: cone; radiusTop: 0.15; radiusBottom: 0.19; height: 0.02; segmentsRadial: 4; segmentsHeight: 1" rotation="0 45 0"></a-mixin>
+        <a-mixin id="square" geometry="primitive: box; width: 0.18; height: 0.025; depth: 0.18;" position="0 0.02 0"></a-mixin>
+        <a-mixin id="blue" material="color: #1E2768;"></a-mixin>
+        <a-mixin id="darkgreen" material="color: #22FF90;"></a-mixin>
+        <a-mixin id="yellow" material="color: #FFF88E;"></a-mixin>
+        <a-mixin id="offset" position="0 0.01 0"></a-mixin>
       </a-assets>
 
       <a-entity environment="preset: tron;
@@ -51,13 +57,16 @@
       <!-- BEGIN INPUTS/KEYBOARD -->
       <a-keyboard position="-4 .3 -4"></a-keyboard>
       <a-input position="-4 1.1 -5" placeholder="searchCriteria" color="black" width="1.7" disabled='false' value=''></a-input>
-
       <!-- END INPUTS/KEYBOARD -->
+
       <a-rounded position="-2 0.1 -5" width="4" height="10" radius="0.05" rotation="0 2 0" scale="0.3 0.3 0.3">
         <a-form id="indices">
           <!--filled dynamically-->
         </a-form>
       </a-rounded>
+
+      <!-- make search go-->
+      <a-entity id="buttonCustom" ui-button="value: 0; base: beveled-square, blue; top: square, darkgreen; pressed: yellow, offset" position="-2.5 .5 -5" rotation="45 0 0"></a-entity>
     </a-scene>
   </body>
 </html>
