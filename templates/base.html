@@ -49,20 +49,13 @@
 
 
       <!-- BEGIN INPUTS/KEYBOARD -->
-      <a-keyboard position="-1.5 .5 -2"></a-keyboard>
-      <a-input position="-0.7 2 -2.5" placeholder="Username" color="black" width="1" disabled='false' value='something'></a-input>
-      <a-input position="-0.7 1.8 -2.5" type="password" placeholder="Password" color="black" width="1" disabled='false'></a-input>
+      <a-keyboard></a-keyboard>
+      <a-input position="-4 1.1 -5" placeholder="searchCriteria" color="black" width="1.7" disabled='false' value=''></a-input>
+
       <!-- END INPUTS/KEYBOARD -->
-      <a-rounded position="0.5 0.5 -2.5" width="4" height="3.1" radius="0.05" rotation="0 -20 0" scale="0.3 0.3 0.3">
-        <a-form >
-            <a-switch position="0.2 2.7 0" enabled="true"></a-switch>
-            <a-radio position="0.2 2.4 0" width="3" name="food" label="Burger with fries and pizza" value="pizza"></a-radio>
-            <a-radio position="0.2 2.1 0" width="3" name="food" label="Veggies" checked="true" disabled="true"></a-radio>
-            <a-radio position="0.2 1.8 0" width="3" name="food" label="Ice cream"></a-radio>
-            <a-checkbox position="0.2 1.5 0" width="3" name="stuff" label="I am a checkbox" checked="true"></a-checkbox>
-            <a-checkbox position="0.2 1.2 0" width="3" name="stuff" label="And I am another one" checked="true" disabled="true"></a-checkbox>
-            <a-button position="0.2 0.8 0" name="stuff" value="Click me" type="raised"></a-button>
-            <a-button position="0.2 0.35 0" width="3" name="stuff" value="You cannot click me" disabled="true"></a-button>
+      <a-rounded position="-2 0.1 -5" width="4" height="10" radius="0.05" rotation="0 2 0" scale="0.3 0.3 0.3">
+        <a-form id="indices">
+          <!--filled dynamically-->
         </a-form>
       </a-rounded>
     </a-scene>
